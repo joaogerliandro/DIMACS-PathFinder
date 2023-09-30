@@ -1,20 +1,22 @@
 #pragma once
 
 #include <common.h>
+#include <entities/point.h>
 
 namespace Entities
 {
     class Node
     {
         public:
-            int32_t value;
-            Node *next;    
-            Node *prev;
+            Point coordinate;
 
-            Node() { };
+            int64_t id;
 
-            ~Node() { };
+            std::vector<Entities::Node> *neighbors;
+            std::vector<int32_t> *neighbors_distance;
 
-            void to_string();
+            Node();
+
+            ~Node();
     };
 }

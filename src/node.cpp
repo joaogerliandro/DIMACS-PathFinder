@@ -2,8 +2,14 @@
 
 namespace Entities
 {
-    void Node::to_string()
+    Node::Node()
     {
-        std::cout << "Value: " << this->value;
+        neighbors = new std::vector<Entities::Node>;
+        neighbors_distance = new std::vector<int32_t>;
+    }
+
+    Node::~Node()
+    {
+
     }
 }

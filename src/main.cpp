@@ -1,15 +1,14 @@
 #include <common.h>
 #include <entities.h>
+#include <util.h>
 
 int main()
 {
-    Entities::Node *test_node = new Entities::Node;
+    Util::GraphLoader graph_loader;
 
-    test_node->value = 10; // Test value
-    test_node->next = NULL; // Test next node
-    test_node->prev = NULL;
+    Entities::Node *map_graph = nullptr;
 
-    test_node->to_string();
+    graph_loader.load_graph(map_graph, std::string("USA-road-d.NY"));
 
     return EXIT_SUCCESS;
 }
