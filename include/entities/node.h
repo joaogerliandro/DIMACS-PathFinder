@@ -10,10 +10,10 @@ namespace Entities
         public:
             Point coordinate;
 
-            int64_t id;
+            uint64_t id;
 
-            std::vector<Entities::Node> *neighbors;
-            std::vector<int32_t> *neighbors_distance;
+            std::vector<Entities::Node> neighbors;
+            std::vector<int32_t> neighbors_distance;
 
             Node();
 

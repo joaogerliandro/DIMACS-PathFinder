@@ -2,14 +2,14 @@
 
 namespace Util
 {
-    void GraphLoader::load_graph(Entities::Node *graph_root, std::string file_name)
+    void GraphLoader::load_graph(std::string file_name)
     {
-        load_graph_coordinates(graph_root, file_name + ".co");
+        load_graph_coordinates(file_name + ".co");
 
-        load_graph_distances(graph_root, file_name + ".gr");
+        load_graph_distances(file_name + ".gr");
     }
 
-    void GraphLoader::load_graph_coordinates(Entities::Node *graph_root, std::string_view file_name)
+    void GraphLoader::load_graph_coordinates(std::string_view file_name)
     {
         std::fstream coordinates_file(file_name.data());
 
@@ -52,7 +52,7 @@ namespace Util
         }
     }
 
-    void GraphLoader::load_graph_distances(Entities::Node *graph_root, std::string_view file_name)
+    void GraphLoader::load_graph_distances(std::string_view file_name)
     {
         std::fstream coordinates_file(file_name.data());
 
@@ -97,8 +97,8 @@ namespace Util
 
                 if (stream >> resident >> neighbor >> distance)
                 {
-                    graph_nodes[resident - 1].neighbors->push_back(graph_nodes[neighbor - 1]);
-                    graph_nodes[resident - 1].neighbors_distance->push_back(distance);
+                    graph_nodes[resident - 1].neighbors.push_back(graph_nodes[neighbor - 1]);
+                    graph_nodes[resident - 1].neighbors_distance.push_back(distance);
                 }
             }
         }
