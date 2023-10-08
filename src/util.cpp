@@ -2,14 +2,14 @@
 
 namespace Util
 {
-    void GraphLoader::load_graph(std::string file_name)
+    void GraphHandle::load_graph(std::string file_name)
     {
         load_graph_coordinates(file_name + ".co");
 
         load_graph_distances(file_name + ".gr");
     }
 
-    void GraphLoader::load_graph_coordinates(std::string_view file_name)
+    void GraphHandle::load_graph_coordinates(std::string_view file_name)
     {
         std::fstream coordinates_file(file_name.data());
 
@@ -21,7 +21,7 @@ namespace Util
             read_graph_coordinates(coordinates_file);
     }
 
-    void GraphLoader::read_graph_coordinates(std::fstream &coordinates_file)
+    void GraphHandle::read_graph_coordinates(std::fstream &coordinates_file)
     {
         for (std::string file_line; std::getline(coordinates_file, file_line);)
         {
@@ -52,7 +52,7 @@ namespace Util
         }
     }
 
-    void GraphLoader::load_graph_distances(std::string_view file_name)
+    void GraphHandle::load_graph_distances(std::string_view file_name)
     {
         std::fstream coordinates_file(file_name.data());
 
@@ -64,7 +64,7 @@ namespace Util
             read_graph_distances(coordinates_file);
     }
 
-    void GraphLoader::read_graph_distances(std::fstream &coordinates_file)
+    void GraphHandle::read_graph_distances(std::fstream &coordinates_file)
     {
         std::string file_line;
         std::string line_content;
@@ -101,6 +101,28 @@ namespace Util
                     graph_nodes[resident - 1].neighbors_distance.push_back(distance);
                 }
             }
+        }
+    }
+
+    Entities::Node* GraphHandle::get_node(uint64_t key)
+    {
+        Entities::Node *return_node = nullptr;
+
+        for (Entities::Node node : graph_nodes)
+        {
+            if (node.id = key)
+            {
+                return_node = &node;
+            }
+        }
+
+        if (return_node != nullptr)
+        {
+            return return_node;
+        }
+        else
+        {
+            throw new std::runtime_error("Node not found !");
         }
     }
 }

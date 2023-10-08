@@ -5,6 +5,13 @@
 
 namespace Entities
 {
+    enum COLOR
+    {
+        WHITE = 0,
+        GREY = 1,
+        BLACK = 2
+    };
+
     class Node
     {
         public:
@@ -12,11 +19,24 @@ namespace Entities
 
             uint64_t id;
 
+            uint8_t color;
+
             std::vector<Entities::Node> neighbors;
             std::vector<int32_t> neighbors_distance;
 
-            Node();
+            Node()
+            {
+                color = WHITE;
+            }
 
-            ~Node();
+            ~Node()
+            {
+
+            }
+
+            void reset_color()
+            {
+                color = WHITE;   
+            }
     };
 }

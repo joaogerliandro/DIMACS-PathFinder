@@ -2,40 +2,33 @@
 #include <entities.h>
 #include <util.h>
 
-Entities::Node* dfs(Entities::Node *root, int64_t key)
-{
-    // Search the start
-}
-
-void dfs_metrics(Entities::Node *root, int64_t key)
-{
-    // Calculate the metrics and print
-}
-
-Entities::Node* bfs(Entities::Node *root, int64_t key)
-{
-    // Search the start
-}
-
-void bfs_metrics(Entities::Node *root, int64_t key)
-{
-    // Calculate the metrics and print
-}
+#include <dfs.h>
 
 int main()
 {
-    Util::GraphLoader graph_loader;
+    Util::GraphHandle graph_loader;
 
-    Entities::Node *map_graph = nullptr;
-    Entities::Node *start_node = nullptr;
-    Entities::Node *end_node = nullptr;
+    Entities::Node *first_node = nullptr;
+    Entities::Node *last_node = nullptr;
 
-    graph_loader.load_graph(std::string("USA-road-d.NY"));
+    try
+    {
+        graph_loader.load_graph(std::string("USA-road-d.NY"));
 
-    map_graph = &graph_loader.graph_nodes[0];
+        uint64_t first_value = 1;
+        uint64_t last_value = 6;
 
-    start_node = dfs(map_graph, 4);
-    dfs_metrics(start_node, 1);
+        first_node = graph_loader.get_node(first_value);
+
+        if(first_value == last_value)
+            throw new std::runtime_error("The values no can't be equal !");
+
+        Algorithm::DFS::dfs_algorithm(first_node, last_value);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
     return EXIT_SUCCESS;
 }
