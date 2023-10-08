@@ -2,7 +2,8 @@
 #include <entities.h>
 #include <util.h>
 
-#include <dfs.h>
+#include <algorithm/dfs.h>
+#include <algorithm/bfs.h>
 
 int main()
 {
@@ -22,7 +23,9 @@ int main()
 
         first_node = graph_loader.get_node(first_value);
 
-        Algorithm::DFS::dfs_algorithm(first_node, last_value);
+        //Algorithm::DFS::dfs_algorithm(first_node, last_value);
+
+        Algorithm::BFS::bfs_algorithm(first_node, last_value);
     }
     catch(const std::exception& e)
     {
