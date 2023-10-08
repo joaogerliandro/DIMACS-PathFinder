@@ -21,7 +21,7 @@ namespace Entities
 
             uint8_t color;
 
-            std::vector<Entities::Node> neighbors;
+            std::vector<Entities::Node *> neighbors;
             std::vector<int32_t> neighbors_distance;
 
             Node()

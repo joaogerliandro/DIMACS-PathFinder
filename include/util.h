@@ -8,7 +8,7 @@ namespace Util
     class GraphHandle
     {
         public:
-            std::vector<Entities::Node> graph_nodes;
+            std::vector<Entities::Node *> graph_nodes;
 
             void load_graph(std::string file_name);
 
