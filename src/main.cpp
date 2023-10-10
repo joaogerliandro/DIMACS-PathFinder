@@ -2,8 +2,7 @@
 #include <entities.h>
 #include <util.h>
 
-#include <algorithm/dfs.h>
-#include <algorithm/bfs.h>
+#include <algorithms.h>
 
 int main()
 {
@@ -26,6 +25,10 @@ int main()
         //Algorithm::DFS::dfs_algorithm(first_node, last_value);
 
         //Algorithm::BFS::bfs_algorithm(first_node, last_value);
+
+        Algorithm::UCS::ucs_algorithm(first_node, last_value);
+
+        Algorithm::ASTAR::astar_algorithm(first_node, last_value);
     }
     catch(const std::exception& e)
     {
