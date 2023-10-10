@@ -16,7 +16,7 @@ int main()
         graph_loader.load_graph(std::string("USA-road-d.NY"));
 
         uint64_t first_value = 1;
-        uint64_t last_value = 6;
+        uint64_t last_value = 5;
 
         if(first_value == last_value)
             throw new std::runtime_error("The values no can't be equal !");
@@ -25,7 +25,7 @@ int main()
 
         //Algorithm::DFS::dfs_algorithm(first_node, last_value);
 
-        Algorithm::BFS::bfs_algorithm(first_node, last_value);
+        //Algorithm::BFS::bfs_algorithm(first_node, last_value);
     }
     catch(const std::exception& e)
     {
