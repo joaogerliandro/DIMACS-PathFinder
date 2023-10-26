@@ -1,6 +1,7 @@
 #pragma once
 
 #include <entities.h>
+#include <util.h>
 
 using namespace Entities;
 
@@ -54,39 +55,10 @@ namespace Algorithm
                         break;
                     }
 
-                    std::sort(border->begin(), border->end(), [first_node_border] (Node *node1, Node *node2) {
-                        return compare_by_distance(first_node_border, node1, node2);
-                    });
+                    Util::Sort::sort_by_distance(border, first_node_border);
                 }
 
                 delete border; 
-            }
-
-        private:
-            static bool compare_by_distance(Node *target, Node *node1, Node *node2)
-            {
-                int32_t node1_distance = 0;
-                int32_t node2_distance = 0;
-
-                for(size_t i = 0; i < node1->neighbors.size(); i++)
-                {
-                    if(node1->neighbors[i]->id == target->id)
-                    {
-                        node1_distance = node1->neighbors_distance[i];
-                        break;
-                    }
-                }
-
-                for(size_t i = 0; i < node2->neighbors.size(); i++)
-                {
-                    if(node2->neighbors[i]->id == target->id)
-                    {
-                        node2_distance = node2->neighbors_distance[i];
-                        break;
-                    }
-                }
-
-                return node1_distance < node2_distance;
             }
     };
 }
