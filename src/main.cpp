@@ -26,7 +26,7 @@ int main()
 
         //Algorithm::BFS::bfs_algorithm(first_node, last_value);
 
-        Algorithm::UCS::ucs_algorithm(first_node, last_value);
+        //Algorithm::UCS::ucs_algorithm(first_node, last_value);
 
         Algorithm::ASTAR::astar_algorithm(first_node, last_value);
     }
