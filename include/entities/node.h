@@ -43,9 +43,13 @@ namespace Entities
 
             }
 
-            void reset_color()
+            void reset_node()
             {
-                color = WHITE;   
+                color = WHITE;
+                heuristic = 0;
+                cost = std::numeric_limits<int32_t>::max();
+                f_score = std::numeric_limits<int32_t>::max();
+                parent = nullptr;  
             }
     };
 }

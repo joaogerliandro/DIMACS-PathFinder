@@ -12,7 +12,9 @@ namespace Util
 
             void load_graph(std::string file_name);
 
-            Entities::Node* get_node(uint64_t key);
+            Entities::Node* get_node(Entities::Point point);
+
+            void reset_nodes();
         private:
             void load_graph_coordinates(std::string_view file_name);
 

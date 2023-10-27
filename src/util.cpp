@@ -104,26 +104,27 @@ namespace Util
         }
     }
 
-    Entities::Node* GraphHandle::get_node(uint64_t key)
+    Entities::Node* GraphHandle::get_node(Entities::Point point)
     {
         Entities::Node *return_node = nullptr;
 
         for (Entities::Node *node : graph_nodes)
         {
-            if (node->id == key)
+            if (node->coordinate == point)
             {
                 return_node = node;
                 break;
             }
         }
 
-        if (return_node != nullptr)
+        return return_node;
+    }
+
+    void GraphHandle::reset_nodes()
+    {
+        for(Entities::Node *node : graph_nodes)
         {
-            return return_node;
-        }
-        else
-        {
-            throw new std::runtime_error("Node not found !");
+            node->reset_node();
         }
     }
 

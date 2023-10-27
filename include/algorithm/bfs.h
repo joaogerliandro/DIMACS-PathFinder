@@ -9,7 +9,7 @@ namespace Algorithm
     class BFS
     {
         public:
-            static void bfs_algorithm(Node *first_node, uint64_t last_value)
+            static void bfs_algorithm(Node *first_node, Node *last_node)
             {
                 std::vector<Node *> *fifo_vec = new std::vector<Node *>;
 
@@ -21,7 +21,7 @@ namespace Algorithm
                 
                 while (!(fifo_vec->empty()))
                 {
-                    if((*fifo_vec)[0]->id == last_value)
+                    if((*fifo_vec)[0]->id == last_node->id)
                     {
                         std::cout << "Encontrou !" << std::endl;
                         break;
@@ -33,7 +33,7 @@ namespace Algorithm
 
                     for(Node *other_node : first_node_fifo->neighbors)
                     {
-                        found = other_node->id == last_value ? true : false;
+                        found = other_node->id == last_node->id ? true : false;
 
                         if(other_node->color == WHITE)
                         {

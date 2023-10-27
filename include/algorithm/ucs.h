@@ -10,7 +10,7 @@ namespace Algorithm
     class UCS
     {
         public:
-            static void ucs_algorithm(Node *first_node, uint64_t last_value)
+            static void ucs_algorithm(Node *first_node, Node *last_node)
             {
                 std::vector<Node *> *border = new std::vector<Node *>;
 
@@ -22,7 +22,7 @@ namespace Algorithm
                 
                 while (!(border->empty()))
                 {
-                    if((*border)[0]->id == last_value)
+                    if((*border)[0]->id == last_node->id)
                     {
                         std::cout << "Encontrou !" << std::endl;
                         break;
@@ -34,7 +34,7 @@ namespace Algorithm
 
                     for(Node *other_node : first_node_border->neighbors)
                     {
-                        found = other_node->id == last_value ? true : false;
+                        found = other_node->id == last_node->id ? true : false;
 
                         if(other_node->color == WHITE)
                         {

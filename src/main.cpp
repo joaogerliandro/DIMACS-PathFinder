@@ -15,22 +15,63 @@ int main()
     {
         graph_loader.load_graph(std::string("USA-road-d.NY"));
 
-        uint64_t first_value = 1;
-        uint64_t last_value = 5;
+        Point first_point;
+        Point last_point;
 
-        if(first_value == last_value)
-            throw new std::runtime_error("The values no can't be equal !");
+        while(true)
+        {
+            std::cout << "Enter the longitude of first Point: ";
+            std::cin >> first_point.longitude;
 
-        first_node = graph_loader.get_node(first_value);
-        last_node = graph_loader.get_node(last_value);
+            std::cout << "Enter the latitude of first Point: ";
+            std::cin >> first_point.latitude;
 
-        //Algorithm::DFS::dfs_algorithm(first_node, last_value);
+            std::cout << "Enter the longitude of last Point: ";
+            std::cin >> last_point.longitude;
 
-        //Algorithm::BFS::bfs_algorithm(first_node, last_value);
+            std::cout << "Enter the latitude of last Point: ";
+            std::cin >> last_point.latitude;
 
-        //Algorithm::UCS::ucs_algorithm(first_node, last_value);
+            if(first_point == last_point)
+            {
+                std::cout << "[Error]: The point's no can't be equal !" << std::endl;
+                continue;
+            }
 
-        //Algorithm::ASTAR::astar_algorithm(first_node, last_node);
+            first_node = graph_loader.get_node(first_point);
+
+            if(first_node == nullptr)
+            {
+                std::cout << "[Error]: The first point was not found !" << std::endl;
+                continue;
+            }
+
+            last_node = graph_loader.get_node(last_point);
+
+            if(last_node == nullptr)
+            {
+                std::cout << "[Error]: The last point was not found !" << std::endl;
+                continue;
+            }
+
+            break;
+        }
+
+        Algorithm::DFS::dfs_algorithm(first_node, last_node);
+
+        graph_loader.reset_nodes();
+
+        Algorithm::BFS::bfs_algorithm(first_node, last_node);
+
+        graph_loader.reset_nodes();
+
+        Algorithm::UCS::ucs_algorithm(first_node, last_node);
+
+        graph_loader.reset_nodes();
+
+        Algorithm::ASTAR::astar_algorithm(first_node, last_node);
+
+        graph_loader.reset_nodes();
     }
     catch(const std::exception& e)
     {
