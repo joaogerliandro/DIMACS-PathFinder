@@ -12,6 +12,8 @@ namespace Algorithm
         public:
             static void astar_algorithm(Node *first_node, Node * last_node)
             {
+                auto start_time = std::chrono::high_resolution_clock::now();
+
                 std::vector<Node *> *open_nodes = new std::vector<Node *>;
                 std::vector<Node *> *closed_nodes = new std::vector<Node *>;
 
@@ -25,11 +27,25 @@ namespace Algorithm
                 
                 while (!(open_nodes->empty()))
                 {
+                    auto current_time = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now() - start_time);
+
+                    if(current_time.count() >= 5)
+                    {
+                        std::cout << "[ASTAR]: Not Found !" << std::endl;
+                        std::cout << "[ASTAR]: Elapsed Time: " << (int32_t) (current_time.count() / 60) 
+                                  << " minutes and " << (int32_t) (current_time.count() % 60) << " seconds !" << std::endl;
+                        break;
+                    }
+
                     Node* current_node = find_node_with_lowest_f_score(open_nodes);
 
                     if (current_node->id == last_node->id) 
                     {
-                        std::cout << "[ASTAR]: Encontrou !" << std::endl;
+                        std::cout << "[ASTAR]: Found !" << std::endl;
+                        auto end_time = std::chrono::high_resolution_clock::now();
+                        auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time);
+                        std::cout << "[ASTAR]: Elapsed Time: " << (int32_t) (elapsed_time.count() / 60) 
+                                  << " minutes and " << (int32_t) (elapsed_time.count() % 60) << " seconds !" << std::endl;
                         break;
                     }
 

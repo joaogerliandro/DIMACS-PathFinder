@@ -11,6 +11,8 @@ namespace Algorithm
         public:
             static void bfs_algorithm(Node *first_node, Node *last_node)
             {
+                auto start_time = std::chrono::high_resolution_clock::now();
+
                 std::vector<Node *> *fifo_vec = new std::vector<Node *>;
 
                 first_node->color = GREY;
@@ -21,9 +23,23 @@ namespace Algorithm
                 
                 while (!(fifo_vec->empty()))
                 {
+                    auto current_time = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now() - start_time);
+
+                    if(current_time.count() >= 5)
+                    {
+                        std::cout << "[BFS]: Not Found !" << std::endl;
+                        std::cout << "[BFS]: Elapsed Time: " << (int32_t) (current_time.count() / 60) 
+                                  << " minutes and " << (int32_t) (current_time.count() % 60) << " seconds !" << std::endl;
+                        break;
+                    }
+
                     if((*fifo_vec)[0]->id == last_node->id)
                     {
-                        std::cout << "[BFS]: Encontrou !" << std::endl;
+                        std::cout << "[BFS]: Found !" << std::endl;
+                        auto end_time = std::chrono::high_resolution_clock::now();
+                        auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time);
+                        std::cout << "[BFS]: Elapsed Time: " << (int32_t) (elapsed_time.count() / 60) 
+                                  << " minutes and " << (int32_t) (elapsed_time.count() % 60) << " seconds !" << std::endl;
                         break;
                     }
 
@@ -50,7 +66,11 @@ namespace Algorithm
 
                     if(found)
                     {
-                        std::cout << "[BFS]: Encontrou !" << std::endl;
+                        std::cout << "[BFS]: Found !" << std::endl;
+                        auto end_time = std::chrono::high_resolution_clock::now();
+                        auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time);
+                        std::cout << "[BFS]: Elapsed Time: " << (int32_t) (elapsed_time.count() / 60) 
+                                  << " minutes and " << (int32_t) (elapsed_time.count() % 60) << " seconds !" << std::endl;
                         break;
                     }
                 }
