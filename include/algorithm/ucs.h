@@ -24,7 +24,7 @@ namespace Algorithm
                 {
                     if((*border)[0]->id == last_node->id)
                     {
-                        std::cout << "Encontrou !" << std::endl;
+                        std::cout << "[UCS]: Encontrou !" << std::endl;
                         break;
                     }
 
@@ -51,7 +51,7 @@ namespace Algorithm
 
                     if(found)
                     {
-                        std::cout << "Encontrou !" << std::endl;
+                        std::cout << "[UCS]: Encontrou !" << std::endl;
                         break;
                     }
 

@@ -29,7 +29,7 @@ namespace Algorithm
 
                     if (current_node->id == last_node->id) 
                     {
-                        std::cout << "Encontrou !" << std::endl;
+                        std::cout << "[ASTAR]: Encontrou !" << std::endl;
                         break;
                     }
 

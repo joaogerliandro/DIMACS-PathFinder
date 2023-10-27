@@ -19,7 +19,7 @@ namespace Algorithm
 
                         if(found)
                         {
-                            std::cout << "Encontrou !" << std::endl;
+                            std::cout << "[DFS]: Encontrou !" << std::endl;
                             break;
                         }
                     }

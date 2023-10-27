@@ -23,7 +23,7 @@ namespace Algorithm
                 {
                     if((*fifo_vec)[0]->id == last_node->id)
                     {
-                        std::cout << "Encontrou !" << std::endl;
+                        std::cout << "[BFS]: Encontrou !" << std::endl;
                         break;
                     }
 
@@ -50,7 +50,7 @@ namespace Algorithm
 
                     if(found)
                     {
-                        std::cout << "Encontrou !" << std::endl;
+                        std::cout << "[BFS]: Encontrou !" << std::endl;
                         break;
                     }
                 }
