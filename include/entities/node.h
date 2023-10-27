@@ -24,9 +24,18 @@ namespace Entities
             std::vector<Entities::Node *> neighbors;
             std::vector<int32_t> neighbors_distance;
 
+            int32_t cost;    
+            int32_t heuristic; 
+            int32_t f_score;
+            Node* parent;
+    
             Node()
             {
                 color = WHITE;
+                heuristic = 0;
+                cost = std::numeric_limits<int32_t>::max();
+                f_score = std::numeric_limits<int32_t>::max();
+                parent = nullptr;
             }
 
             ~Node()

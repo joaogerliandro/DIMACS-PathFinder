@@ -28,6 +28,8 @@ namespace Util
         public:
             static void sort_by_distance(std::vector<Entities::Node *> *nodes, Entities::Node *target);
 
+            static void sort_by_f_score(std::vector<Entities::Node *> *nodes);
+
         private:
             static bool compare_by_distance(Entities::Node *target, Entities::Node *node1, Entities::Node *node2)
             {

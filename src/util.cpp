@@ -129,8 +129,17 @@ namespace Util
 
     void Sort::sort_by_distance(std::vector<Entities::Node *> *nodes, Entities::Node *target)
     {
-        std::sort(nodes->begin(), nodes->end(), [target] (Entities::Node *node1, Entities::Node *node2) {
+        std::sort(nodes->begin(), nodes->end(), [target] (Entities::Node *node1, Entities::Node *node2) 
+        {
             return compare_by_distance(target, node1, node2);
+        });
+    }
+
+    void Sort::sort_by_f_score(std::vector<Entities::Node *> *open_nodes)
+    {
+        std::sort(open_nodes->begin(), open_nodes->end(), [] (Entities::Node *node1, Entities::Node *node2) 
+        {
+            return node1->f_score < node2->f_score;
         });
     }
 }

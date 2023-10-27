@@ -9,6 +9,7 @@ int main()
     Util::GraphHandle graph_loader;
 
     Entities::Node *first_node = nullptr;
+    Entities::Node *last_node = nullptr;
     
     try
     {
@@ -21,6 +22,7 @@ int main()
             throw new std::runtime_error("The values no can't be equal !");
 
         first_node = graph_loader.get_node(first_value);
+        last_node = graph_loader.get_node(last_value);
 
         //Algorithm::DFS::dfs_algorithm(first_node, last_value);
 
@@ -28,7 +30,7 @@ int main()
 
         //Algorithm::UCS::ucs_algorithm(first_node, last_value);
 
-        Algorithm::ASTAR::astar_algorithm(first_node, last_value);
+        //Algorithm::ASTAR::astar_algorithm(first_node, last_node);
     }
     catch(const std::exception& e)
     {
