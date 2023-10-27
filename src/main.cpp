@@ -60,17 +60,33 @@ int main()
 
         Algorithm::DFS::dfs_algorithm(first_node, last_node);
 
+        graph_loader.expanded_nodes("[DFS]");
+
+        graph_loader.expanded_ramification_factor("[DFS]");
+
         graph_loader.reset_nodes();
 
         Algorithm::BFS::bfs_algorithm(first_node, last_node);
 
+        graph_loader.expanded_nodes("[BFS]");
+
+        graph_loader.expanded_ramification_factor("[BFS]");
+
         graph_loader.reset_nodes();
 
         Algorithm::UCS::ucs_algorithm(first_node, last_node);
+        
+        graph_loader.expanded_nodes("[UCS]");
+
+        graph_loader.expanded_ramification_factor("[UCS]");
 
         graph_loader.reset_nodes();
 
         Algorithm::ASTAR::astar_algorithm(first_node, last_node);
+
+        graph_loader.expanded_nodes("[ASTAR]");
+
+        graph_loader.expanded_ramification_factor("[ASTAR]");
 
         graph_loader.reset_nodes();
     }

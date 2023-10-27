@@ -128,6 +128,40 @@ namespace Util
         }
     }
 
+    void GraphHandle::expanded_nodes(std::string log_prefix)
+    {
+        uint32_t count = 0;
+
+        for(Entities::Node *node : graph_nodes)
+        {
+            if(node->color == Entities::BLACK || node -> color == Entities::GREY)
+                count++;
+        }
+
+        std::cout << log_prefix << ": Expanded Nodes: " << count << std::endl;
+    }
+
+    void GraphHandle::expanded_ramification_factor(std::string log_prefix)
+    {
+        uint32_t count = 0;
+        uint32_t major = 0;
+
+        for(Entities::Node *node : graph_nodes)
+        {
+            for(Entities::Node *node_adj : node->neighbors){
+                if(node_adj->color == Entities::BLACK || node_adj -> color == Entities::GREY)
+                    count++;
+            }
+
+            if(major < count)
+                major = count;
+
+            count = 0;
+        }
+
+        std::cout << log_prefix << ": Ramification Factor Nodes: " << major << std::endl;
+    }
+
     void Sort::sort_by_distance(std::vector<Entities::Node *> *nodes, Entities::Node *target)
     {
         std::sort(nodes->begin(), nodes->end(), [target] (Entities::Node *node1, Entities::Node *node2) 
