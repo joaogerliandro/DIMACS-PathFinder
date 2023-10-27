@@ -45,7 +45,7 @@ namespace Util
                 Entities::Node *new_node = new Entities::Node;
 
                 if (stream >> new_node->id >> new_node->coordinate.longitude >> new_node->coordinate.latitude)
-                    graph_nodes.push_back(new_node);
+                    graph_nodes->push_back(new_node);
 
                 stream.ignore('\n');
             }
@@ -97,8 +97,8 @@ namespace Util
 
                 if (stream >> resident >> neighbor >> distance)
                 {
-                    graph_nodes[resident - 1]->neighbors.push_back(graph_nodes[neighbor - 1]);
-                    graph_nodes[resident - 1]->neighbors_distance.push_back(distance);
+                    (*graph_nodes)[resident - 1]->neighbors.push_back((*graph_nodes)[neighbor - 1]);
+                    (*graph_nodes)[resident - 1]->neighbors_distance.push_back(distance);
                 }
             }
         }
@@ -108,7 +108,7 @@ namespace Util
     {
         Entities::Node *return_node = nullptr;
 
-        for (Entities::Node *node : graph_nodes)
+        for (Entities::Node *node : *graph_nodes)
         {
             if (node->coordinate == point)
             {
@@ -122,7 +122,7 @@ namespace Util
 
     void GraphHandle::reset_nodes()
     {
-        for(Entities::Node *node : graph_nodes)
+        for(Entities::Node *node : *graph_nodes)
         {
             node->reset_node();
         }
@@ -132,7 +132,7 @@ namespace Util
     {
         uint32_t count = 0;
 
-        for(Entities::Node *node : graph_nodes)
+        for(Entities::Node *node : *graph_nodes)
         {
             if(node->color == Entities::BLACK || node -> color == Entities::GREY)
                 count++;
@@ -146,7 +146,7 @@ namespace Util
         uint32_t count = 0;
         uint32_t major = 0;
 
-        for(Entities::Node *node : graph_nodes)
+        for(Entities::Node *node : *graph_nodes)
         {
             for(Entities::Node *node_adj : node->neighbors){
                 if(node_adj->color == Entities::BLACK || node_adj -> color == Entities::GREY)

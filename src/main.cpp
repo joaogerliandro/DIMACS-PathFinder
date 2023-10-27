@@ -13,7 +13,6 @@ int main()
     
     try
     {
-
         graph_loader.load_graph(std::string("USA-road-d.NY"));
 
         Point first_point;
