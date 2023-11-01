@@ -23,6 +23,8 @@ namespace Util
 
     void GraphHandle::read_graph_coordinates(std::fstream &coordinates_file)
     {
+        uint32_t counter = 0;
+
         for (std::string file_line; std::getline(coordinates_file, file_line);)
         {
             if (file_line.empty())
@@ -42,6 +44,8 @@ namespace Util
                 continue;
             else if (prefix == "v")
             {
+                counter++;
+
                 Entities::Node *new_node = new Entities::Node;
 
                 if (stream >> new_node->id >> new_node->coordinate.longitude >> new_node->coordinate.latitude)
@@ -50,6 +54,8 @@ namespace Util
                 stream.ignore('\n');
             }
         }
+
+        std::cout << "Graph Node Size: " << graph_nodes->size() << std::endl;
     }
 
     void GraphHandle::load_graph_distances(std::string_view file_name)

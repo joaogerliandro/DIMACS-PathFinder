@@ -15,10 +15,13 @@ int main()
     {
         graph_loader.load_graph(std::string("USA-road-d.NY"));
 
-        Point first_point;
-        Point last_point;
+        Point first_point = Point(-73530767, 41085396);
+        Point last_point = Point(-73917690, 41291980);
 
-        while(true)
+        first_node = graph_loader.get_node(first_point);
+        last_node = graph_loader.get_node(last_point);
+
+        /*while(true)
         {
             std::cout << "Enter the longitude of first Point: ";
             std::cin >> first_point.longitude;
@@ -55,15 +58,16 @@ int main()
             }
 
             break;
-        }
+        } 
+        */
 
-        Algorithm::DFS::dfs_algorithm(first_node, last_node);
+        /*Algorithm::DFS::dfs_algorithm(first_node, last_node);
 
         graph_loader.expanded_nodes("[DFS]");
 
         graph_loader.expanded_ramification_factor("[DFS]");
 
-        graph_loader.reset_nodes();
+        graph_loader.reset_nodes(); */
 
         Algorithm::BFS::bfs_algorithm(first_node, last_node);
 

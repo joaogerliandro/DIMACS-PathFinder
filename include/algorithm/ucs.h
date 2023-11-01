@@ -24,13 +24,14 @@ namespace Algorithm
                 
                 while (!(border->empty()))
                 {
-                    auto current_time = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now() - start_time);
+                    auto current_time = std::chrono::high_resolution_clock::now();
+                    auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - start_time);
 
-                    if(current_time.count() >= 5)
+                    if(((elapsed_time.count() / 1000) / 60) >= 5)
                     {
                         std::cout << "[UCS]: Not Found !" << std::endl;
-                        std::cout << "[UCS]: Elapsed Time: " << (int32_t) (current_time.count() / 60) 
-                                  << " minutes and " << (int32_t) (current_time.count() % 60) << " seconds !" << std::endl;
+                        std::cout << "[UCS]: Elapsed Time: " << ((elapsed_time.count() / 1000) / 60)
+                                  << " minutes and " << ((elapsed_time.count() / 1000) & 60) << " seconds "<< (elapsed_time.count() % 1000) << " milliseconds !" << std::endl;
                         break;
                     }
 
@@ -38,9 +39,9 @@ namespace Algorithm
                     {
                         std::cout << "[UCS]: Found !" << std::endl;
                         auto end_time = std::chrono::high_resolution_clock::now();
-                        auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time);
-                        std::cout << "[UCS]: Elapsed Time: " << (int32_t) (elapsed_time.count() / 60) 
-                                  << " minutes and " << (int32_t) (elapsed_time.count() % 60) << " seconds !" << std::endl;
+                        elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time);
+                        std::cout << "[UCS]: Elapsed Time: " << ((elapsed_time.count() / 1000) / 60)
+                                  << " minutes and " << ((elapsed_time.count() / 1000) & 60) << " seconds "<< (elapsed_time.count() % 1000) << " milliseconds !" << std::endl;
                         break;
                     }
 
@@ -69,9 +70,9 @@ namespace Algorithm
                     {
                         std::cout << "[UCS]: Found !" << std::endl;
                         auto end_time = std::chrono::high_resolution_clock::now();
-                        auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time);
-                        std::cout << "[UCS]: Elapsed Time: " << (int32_t) (elapsed_time.count() / 60) 
-                                  << " minutes and " << (int32_t) (elapsed_time.count() % 60) << " seconds !" << std::endl;
+                        elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time);
+                        std::cout << "[UCS]: Elapsed Time: " << ((elapsed_time.count() / 1000) / 60)
+                                  << " minutes and " << ((elapsed_time.count() / 1000) & 60) << " seconds "<< (elapsed_time.count() % 1000) << " milliseconds !" << std::endl;
                         break;
                     }
 
