@@ -40,22 +40,25 @@ namespace Util
 
             std::istringstream stream{target.data()};
 
-            if (prefix == "c" || prefix == "p")
-                continue;
-            else if (prefix == "v")
+            if (prefix == "v")
             {
-                counter++;
-
                 Entities::Node *new_node = new Entities::Node;
+                double longitude = 0.0f;
+                double latitude = 0.0f;
 
-                if (stream >> new_node->id >> new_node->coordinate.longitude >> new_node->coordinate.latitude)
-                    graph_nodes->push_back(new_node);
+                if (stream >> new_node->id >> longitude >> latitude)
+                {
+                    new_node->coordinate = Entities::Point(longitude, latitude);
+                    graph_nodes->push_back(std::move(new_node));
+                }
 
                 stream.ignore('\n');
+
+                counter++;
             }
         }
 
-        std::cout << "Graph Node Size: " << graph_nodes->size() << std::endl;
+        std::cout << "Graph Node Size: " << counter << std::endl;
     }
 
     void GraphHandle::load_graph_distances(std::string_view file_name)
@@ -72,6 +75,8 @@ namespace Util
 
     void GraphHandle::read_graph_distances(std::fstream &coordinates_file)
     {
+        uint32_t counter = 0;
+
         std::string file_line;
         std::string line_content;
         std::string prefix;
@@ -93,21 +98,23 @@ namespace Util
 
             std::istringstream stream{target.data()};
 
-            if (prefix == "c" || prefix == "p")
-                continue;
-            else if (prefix == "a")
+            if (prefix == "a")
             {
-                int64_t resident;
-                int64_t neighbor;
-                int32_t distance;
+                uint32_t resident;
+                uint32_t neighbor;
+                uint32_t distance;
 
                 if (stream >> resident >> neighbor >> distance)
                 {
                     (*graph_nodes)[resident - 1]->neighbors.push_back((*graph_nodes)[neighbor - 1]);
                     (*graph_nodes)[resident - 1]->neighbors_distance.push_back(distance);
                 }
+
+                counter++;
             }
         }
+
+        std::cout << "Number of distances: " << counter << std::endl;
     }
 
     Entities::Node* GraphHandle::get_node(Entities::Point point)

@@ -22,7 +22,7 @@ namespace Entities
             uint8_t color;
 
             std::vector<Entities::Node *> neighbors;
-            std::vector<int32_t> neighbors_distance;
+            std::vector<uint32_t> neighbors_distance;
 
             int32_t cost;    
             int32_t heuristic; 

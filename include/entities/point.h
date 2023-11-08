@@ -16,7 +16,7 @@ namespace Entities
                 latitude = 0.0;
             }
 
-            Point(double x, double y) : longitude(x), latitude(y) {}
+            Point(double x, double y) : longitude((double) (x / 1000000.0f)), latitude((double) (y / 1000000.0f)) {}
 
             ~Point() { }
 

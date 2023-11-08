@@ -15,8 +15,8 @@ int main()
     {
         graph_loader.load_graph(std::string("USA-road-d.NY"));
 
-        Point first_point = Point(-73530767, 41085396);
-        Point last_point = Point(-73917690, 41291980);
+        Point first_point = Point(-73553544, 41059680);
+        Point last_point = Point(-73773541, 40958771);
 
         first_node = graph_loader.get_node(first_point);
         last_node = graph_loader.get_node(last_point);
@@ -60,38 +60,38 @@ int main()
             break;
         } 
         */
-
-        /*Algorithm::DFS::dfs_algorithm(first_node, last_node);
+       
+        Algorithm::DFS::dfs_algorithm(first_node, last_node);
 
         graph_loader.expanded_nodes("[DFS]");
 
         graph_loader.expanded_ramification_factor("[DFS]");
 
-        graph_loader.reset_nodes(); */
-
-        Algorithm::BFS::bfs_algorithm(first_node, last_node);
-
-        graph_loader.expanded_nodes("[BFS]");
-
-        graph_loader.expanded_ramification_factor("[BFS]");
-
         graph_loader.reset_nodes();
 
-        Algorithm::UCS::ucs_algorithm(first_node, last_node);
+        // Algorithm::BFS::bfs_algorithm(first_node, last_node);
+
+        // graph_loader.expanded_nodes("[BFS]");
+
+        // graph_loader.expanded_ramification_factor("[BFS]");
+
+        // graph_loader.reset_nodes();
+
+        // Algorithm::UCS::ucs_algorithm(first_node, last_node);
         
-        graph_loader.expanded_nodes("[UCS]");
+        // graph_loader.expanded_nodes("[UCS]");
 
-        graph_loader.expanded_ramification_factor("[UCS]");
+        // graph_loader.expanded_ramification_factor("[UCS]");
 
-        graph_loader.reset_nodes();
+        // graph_loader.reset_nodes();
 
-        Algorithm::ASTAR::astar_algorithm(first_node, last_node);
+        //Algorithm::ASTAR::astar_algorithm(first_node, last_node);
 
-        graph_loader.expanded_nodes("[ASTAR]");
+        //graph_loader.expanded_nodes("[ASTAR]");
 
-        graph_loader.expanded_ramification_factor("[ASTAR]");
+        //graph_loader.expanded_ramification_factor("[ASTAR]");
 
-        graph_loader.reset_nodes();
+        //graph_loader.reset_nodes();
     }
     catch(const std::exception& e)
     {
