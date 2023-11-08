@@ -21,7 +21,7 @@ int main()
         first_node = graph_loader.get_node(first_point);
         last_node = graph_loader.get_node(last_point);
 
-        /*while(true)
+        while(true)
         {
             std::cout << "Enter the longitude of first Point: ";
             std::cin >> first_point.longitude;
@@ -59,8 +59,31 @@ int main()
 
             break;
         } 
-        */
-       
+
+        Algorithm::BFS::bfs_algorithm(first_node, last_node);
+
+        graph_loader.expanded_nodes("[BFS]");
+
+        graph_loader.expanded_ramification_factor("[BFS]");
+
+        graph_loader.reset_nodes();
+
+        Algorithm::UCS::ucs_algorithm(first_node, last_node);
+        
+        graph_loader.expanded_nodes("[UCS]");
+
+        graph_loader.expanded_ramification_factor("[UCS]");
+
+        graph_loader.reset_nodes();
+
+        Algorithm::ASTAR::astar_algorithm(first_node, last_node);
+
+        graph_loader.expanded_nodes("[ASTAR]");
+
+        graph_loader.expanded_ramification_factor("[ASTAR]");
+
+        graph_loader.reset_nodes();
+
         Algorithm::DFS::dfs_algorithm(first_node, last_node);
 
         graph_loader.expanded_nodes("[DFS]");
@@ -68,30 +91,6 @@ int main()
         graph_loader.expanded_ramification_factor("[DFS]");
 
         graph_loader.reset_nodes();
-
-        // Algorithm::BFS::bfs_algorithm(first_node, last_node);
-
-        // graph_loader.expanded_nodes("[BFS]");
-
-        // graph_loader.expanded_ramification_factor("[BFS]");
-
-        // graph_loader.reset_nodes();
-
-        // Algorithm::UCS::ucs_algorithm(first_node, last_node);
-        
-        // graph_loader.expanded_nodes("[UCS]");
-
-        // graph_loader.expanded_ramification_factor("[UCS]");
-
-        // graph_loader.reset_nodes();
-
-        //Algorithm::ASTAR::astar_algorithm(first_node, last_node);
-
-        //graph_loader.expanded_nodes("[ASTAR]");
-
-        //graph_loader.expanded_ramification_factor("[ASTAR]");
-
-        //graph_loader.reset_nodes();
     }
     catch(const std::exception& e)
     {
