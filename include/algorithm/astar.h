@@ -50,7 +50,7 @@ namespace Algorithm
                         break;
                     }
 
-                    current_node->color == GREY;
+                    current_node->color = GREY;
                     open_nodes->erase(std::remove(open_nodes->begin(), open_nodes->end(), current_node), open_nodes->end());
                     closed_nodes->push_back(current_node);
 
@@ -74,7 +74,7 @@ namespace Algorithm
                         }
                     }
 
-                    current_node->color == BLACK;
+                    current_node->color = BLACK;
 
                     Util::Sort::sort_by_f_score(open_nodes);
                 }

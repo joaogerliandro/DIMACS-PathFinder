@@ -19,11 +19,15 @@ namespace Util
 
             Entities::Node* get_node(Entities::Point point);
 
+            Entities::Node* get_node(uint32_t id);
+
             void reset_nodes();
 
             void expanded_nodes(std::string log_prefix);
 
             void expanded_ramification_factor(std::string log_prefix);
+            
+            uint32_t graph_size;
         private:
             void load_graph_coordinates(std::string_view file_name);
 

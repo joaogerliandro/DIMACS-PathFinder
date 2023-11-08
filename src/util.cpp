@@ -133,6 +133,22 @@ namespace Util
         return return_node;
     }
 
+    Entities::Node* GraphHandle::get_node(uint32_t id)
+    {
+        Entities::Node *return_node = nullptr;
+
+        for (Entities::Node *node : *graph_nodes)
+        {
+            if (node->id == id)
+            {
+                return_node = node;
+                break;
+            }
+        }
+
+        return return_node;
+    }
+
     void GraphHandle::reset_nodes()
     {
         for(Entities::Node *node : *graph_nodes)
@@ -152,6 +168,7 @@ namespace Util
         }
 
         std::cout << log_prefix << ": Expanded Nodes: " << count << std::endl;
+        std::cout << log_prefix << ": Alocated Memory: " << count * sizeof(Entities::Node) << " bits" << std::endl;
     }
 
     void GraphHandle::expanded_ramification_factor(std::string log_prefix)
